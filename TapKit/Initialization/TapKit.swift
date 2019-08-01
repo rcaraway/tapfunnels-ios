@@ -18,7 +18,9 @@ public class TapKit {
         let request = TapKitRequest.tapKitRequest(apiKey: apiKey)
         let api = TapKitAPIService(request: request)
         shared.api = api
-        api.beginInitialization().done { _ in }
+        api.beginInitialization { (response, error) in
+            
+        }
     }
     
 }

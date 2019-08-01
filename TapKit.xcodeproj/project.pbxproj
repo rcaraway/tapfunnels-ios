@@ -8,13 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 352A219722DEA3AD004A516B /* Views.xcdatamodeld */; };
+		3581361D22EF2FB000A627EA /* Viewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581361C22EF2FB000A627EA /* Viewable.swift */; };
+		35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */; };
+		35B0BE0022E7DAE50044429F /* UIView+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */; };
+		35B0BE0222E7DB5A0044429F /* ViewDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */; };
 		35C098D822B0681300F7FE98 /* TapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C098CE22B0681300F7FE98 /* TapKit.framework */; };
 		35C098DD22B0681300F7FE98 /* TapKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098DC22B0681300F7FE98 /* TapKitTests.swift */; };
 		35C098DF22B0681300F7FE98 /* TapKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 35C098D122B0681300F7FE98 /* TapKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		35C098EA22B0693200F7FE98 /* TapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098E922B0693200F7FE98 /* TapKit.swift */; };
 		35C098EC22B06ABE00F7FE98 /* TapKitAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098EB22B06ABE00F7FE98 /* TapKitAPIService.swift */; };
 		35C098EE22B06CEB00F7FE98 /* TapKitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098ED22B06CEB00F7FE98 /* TapKitRequest.swift */; };
-		35ED99EE22E5FFCF0029FF58 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35ED99ED22E5FFCF0029FF58 /* PromiseKit.framework */; };
+		35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D945C322F113FD00C444DD /* UIColor+Components.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,8 +32,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		352A219322DEA057004A516B /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = TapKit/Frameworks/PromiseKit.framework; sourceTree = SOURCE_ROOT; };
 		352A219822DEA3AD004A516B /* View.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = View.xcdatamodel; sourceTree = "<group>"; };
+		3581361C22EF2FB000A627EA /* Viewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewable.swift; sourceTree = "<group>"; };
+		35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conversion.swift"; sourceTree = "<group>"; };
+		35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Conversion.swift"; sourceTree = "<group>"; };
+		35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataStore.swift; sourceTree = "<group>"; };
 		35C098CE22B0681300F7FE98 /* TapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C098D122B0681300F7FE98 /* TapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapKit.h; sourceTree = "<group>"; };
 		35C098D222B0681300F7FE98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -39,7 +46,7 @@
 		35C098E922B0693200F7FE98 /* TapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKit.swift; sourceTree = "<group>"; };
 		35C098EB22B06ABE00F7FE98 /* TapKitAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKitAPIService.swift; sourceTree = "<group>"; };
 		35C098ED22B06CEB00F7FE98 /* TapKitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKitRequest.swift; sourceTree = "<group>"; };
-		35ED99ED22E5FFCF0029FF58 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		35D945C322F113FD00C444DD /* UIColor+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Components.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +62,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				35C098D822B0681300F7FE98 /* TapKit.framework in Frameworks */,
-				35ED99EE22E5FFCF0029FF58 /* PromiseKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,16 +72,13 @@
 			isa = PBXGroup;
 			children = (
 				352A219722DEA3AD004A516B /* Views.xcdatamodeld */,
+				35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */,
+				35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */,
+				35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */,
+				3581361C22EF2FB000A627EA /* Viewable.swift */,
+				35D945C322F113FD00C444DD /* UIColor+Components.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		352A219522DEA05D004A516B /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				352A219322DEA057004A516B /* PromiseKit.framework */,
-			);
-			path = Frameworks;
 			sourceTree = "<group>";
 		};
 		35C098C422B0681300F7FE98 = {
@@ -84,7 +87,6 @@
 				35C098D022B0681300F7FE98 /* TapKit */,
 				35C098DB22B0681300F7FE98 /* TapKitTests */,
 				35C098CF22B0681300F7FE98 /* Products */,
-				35ED99EC22E5FFCF0029FF58 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -104,7 +106,6 @@
 				35C098E822B068F200F7FE98 /* Initialization */,
 				35C098D122B0681300F7FE98 /* TapKit.h */,
 				35C098D222B0681300F7FE98 /* Info.plist */,
-				352A219522DEA05D004A516B /* Frameworks */,
 			);
 			path = TapKit;
 			sourceTree = "<group>";
@@ -126,14 +127,6 @@
 				35C098ED22B06CEB00F7FE98 /* TapKitRequest.swift */,
 			);
 			path = Initialization;
-			sourceTree = "<group>";
-		};
-		35ED99EC22E5FFCF0029FF58 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				35ED99ED22E5FFCF0029FF58 /* PromiseKit.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +238,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3581361D22EF2FB000A627EA /* Viewable.swift in Sources */,
+				35B0BE0022E7DAE50044429F /* UIView+Conversion.swift in Sources */,
+				35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */,
 				352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */,
+				35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */,
 				35C098EA22B0693200F7FE98 /* TapKit.swift in Sources */,
+				35B0BE0222E7DB5A0044429F /* ViewDataStore.swift in Sources */,
 				35C098EC22B06ABE00F7FE98 /* TapKitAPIService.swift in Sources */,
 				35C098EE22B06CEB00F7FE98 /* TapKitRequest.swift in Sources */,
 			);
@@ -416,12 +414,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/TapKit/**",
 					"$(PROJECT_DIR)/TapKit/Frameworks",
 				);
 				INFOPLIST_FILE = TapKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -449,12 +446,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-					"$(PROJECT_DIR)/TapKit/**",
 					"$(PROJECT_DIR)/TapKit/Frameworks",
 				);
 				INFOPLIST_FILE = TapKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

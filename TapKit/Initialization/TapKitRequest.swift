@@ -12,12 +12,16 @@ public typealias TapKitRequest = URLRequest
 
 public extension URLRequest {
     
+    private static let IS_HALCYON = false
     private static let TAPKIT_HOST = "localhost.com"
-    private static let TAPKIT_DEVELOPER_HOST = "192.168.0.20" 
+    private static var TAPKIT_DEVELOPER_HOST: String {
+        return IS_HALCYON ?  "10.10.10.33" : "192.168.0.20"
+    }
     private static let TAPKIT_PORT = 9001
     private static let TAPKIT_SCHEME = "http"
     
     private static let TAPKIT_INIT_PATH = "/api/user/initialize"
+    private static let TAPKIT_GENERATE_SCREEN = "/api/app/screen/generate"
 
     static func tapKitRequest(apiKey:String) -> TapKitRequest {
         var components = URLComponents()
@@ -34,9 +38,13 @@ public extension URLRequest {
         request.setValue(uniqueId, forHTTPHeaderField: "AppUserId")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         print("✅ AppToken: \(String(describing: apiKey))")
-        print("✅ AppToken: \(String(describing: uniqueId))")
+        print("✅ PhoneID: \(String(describing: uniqueId))")
         print("✅ URL: \(String(describing: request.url))")
         return request
+    }
+    
+    static func tapKitViewGenerationRequest(apiKey: String, views: [ViewResponse]) {
+        
     }
     
     func isValidTapKitRequest() -> Bool {

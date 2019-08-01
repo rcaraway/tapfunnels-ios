@@ -7,16 +7,8 @@
 //
 
 import UIKit
-import PromiseKit
 
-struct ViewResponse: Codable {
-    let name: String
-    let colorRed: Int
-    let colorBlue: Int
-    let colorGreen: Int
-}
-
-private struct APIResponse: Codable {
+private struct APIResponse: Decodable {
     let success: Bool
     let status: Int
     let message: String
@@ -37,19 +29,29 @@ public class TapKitAPIService {
     }
     
     //TODO: Return View Objects
-    func beginInitialization() -> Promise<[ViewResponse]> {
-        return Promise<[ViewResponse]>() { promise in
-            DispatchQueue.global().async {
-                let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
-                    print("👀 SUCCESS? \(String(describing: data))")
-                    guard let data = data,
-                        let apiResponse = try? JSONDecoder().decode(APIResponse.self, from: data) else {
-                            promise.reject(error!); return
-                    }
-                    promise.fulfill(apiResponse.views)
+    func beginInitialization(completion: @escaping ([ViewResponse]?,Error?) -> Void) {
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
+                print("👀 SUCCESS? \(String(describing: data))")
+                guard let data = data,
+                    let apiResponse = try? JSONDecoder().decode(APIResponse.self, from: data) else {
+                        DispatchQueue.main.async {
+                            completion(nil, error)
+                        }
+                        return
+                }
+                DispatchQueue.main.async {
+                    completion(apiResponse.views, nil)
                 }
             }
+            task.resume()
         }
+    }
+    
+    func generateViews(from viewController: UIViewController, completion: @escaping (/*TODO: FILL THIS OUT */) -> Void) {
+        //TODO: finish translating from psuedocode
+        //get all views and superviews within the view controller
+        //make sure they all have names
     }
     
 }
