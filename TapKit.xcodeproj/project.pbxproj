@@ -10,7 +10,7 @@
 		352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 352A219722DEA3AD004A516B /* Views.xcdatamodeld */; };
 		3581361D22EF2FB000A627EA /* Viewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581361C22EF2FB000A627EA /* Viewable.swift */; };
 		35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */; };
-		35B0BE0022E7DAE50044429F /* UIView+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */; };
+		35B0BE0022E7DAE50044429F /* UIViewController+Tapkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */; };
 		35B0BE0222E7DB5A0044429F /* ViewDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */; };
 		35C098D822B0681300F7FE98 /* TapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35C098CE22B0681300F7FE98 /* TapKit.framework */; };
 		35C098DD22B0681300F7FE98 /* TapKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098DC22B0681300F7FE98 /* TapKitTests.swift */; };
@@ -35,7 +35,7 @@
 		352A219822DEA3AD004A516B /* View.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = View.xcdatamodel; sourceTree = "<group>"; };
 		3581361C22EF2FB000A627EA /* Viewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewable.swift; sourceTree = "<group>"; };
 		35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conversion.swift"; sourceTree = "<group>"; };
-		35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Conversion.swift"; sourceTree = "<group>"; };
+		35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Tapkit.swift"; sourceTree = "<group>"; };
 		35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDataStore.swift; sourceTree = "<group>"; };
 		35C098CE22B0681300F7FE98 /* TapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		35C098D122B0681300F7FE98 /* TapKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TapKit.h; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 			children = (
 				352A219722DEA3AD004A516B /* Views.xcdatamodeld */,
 				35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */,
-				35B0BDFF22E7DAE50044429F /* UIView+Conversion.swift */,
+				35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */,
 				35B0BE0122E7DB5A0044429F /* ViewDataStore.swift */,
 				3581361C22EF2FB000A627EA /* Viewable.swift */,
 				35D945C322F113FD00C444DD /* UIColor+Components.swift */,
@@ -239,7 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3581361D22EF2FB000A627EA /* Viewable.swift in Sources */,
-				35B0BE0022E7DAE50044429F /* UIView+Conversion.swift in Sources */,
+				35B0BE0022E7DAE50044429F /* UIViewController+Tapkit.swift in Sources */,
 				35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */,
 				352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */,
 				35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */,

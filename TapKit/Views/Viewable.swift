@@ -35,3 +35,4 @@ public struct ViewResponse: Codable, Viewable, Hashable, Equatable {
     public let colorGreen: Float
     public let dateModified: Date
 }
+

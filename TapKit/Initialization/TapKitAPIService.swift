@@ -8,11 +8,17 @@
 
 import UIKit
 
-private struct APIResponse: Decodable {
+private struct ApiInitResponse: Decodable {
     let success: Bool
     let status: Int
     let message: String
     let views: [ViewResponse]
+}
+
+private struct ApiGenerateResponse: Decodable {
+    let success: Bool
+    let status: Int
+    let message: String
 }
 
 public class TapKitAPIService {
@@ -28,13 +34,12 @@ public class TapKitAPIService {
         self.request = request
     }
     
-    //TODO: Return View Objects
     func beginInitialization(completion: @escaping ([ViewResponse]?,Error?) -> Void) {
         DispatchQueue.global().async {
             let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
                 print("👀 SUCCESS? \(String(describing: data))")
                 guard let data = data,
-                    let apiResponse = try? JSONDecoder().decode(APIResponse.self, from: data) else {
+                    let apiResponse = try? JSONDecoder().decode(ApiInitResponse.self, from: data) else {
                         DispatchQueue.main.async {
                             completion(nil, error)
                         }
@@ -48,10 +53,49 @@ public class TapKitAPIService {
         }
     }
     
-    func generateViews(from viewController: UIViewController, completion: @escaping (/*TODO: FILL THIS OUT */) -> Void) {
-        //TODO: finish translating from psuedocode
-        //get all views and superviews within the view controller
-        //make sure they all have names
+    func generateViews(apiKey: String, from viewController: UIViewController, completion: @escaping ([ViewResponse]?) -> Void) {
+        generateViews(screenName: nil, apiKey: apiKey, from: viewController, completion: completion)
     }
     
+    func saveViews(request: TapKitRequest, completion: @escaping (Bool) -> Void) {
+        DispatchQueue.global().async {
+            let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+                guard let data = data,
+                    let message = try? JSONDecoder().decode(ApiGenerateResponse.self, from: data) else {
+                        DispatchQueue.main.async {
+                            completion(false)
+                        }
+                        return
+                }
+                DispatchQueue.main.async {
+                    completion(message.status == 200)
+                }
+            }
+            task.resume()
+        }
+        
+    }
+        
+    func generateViews(screenName: String?,
+                       apiKey: String,
+                       from viewController: UIViewController,
+                       completion: @escaping ([ViewResponse]?) -> Void) {
+        DispatchQueue.global().async {
+            let views = viewController.getViewResponsesFromVariables()
+            let viewRequest = TapKitRequest.tapKitViewGenerationRequest(name:screenName, apiKey: apiKey, views: views)
+            let task = URLSession.shared.dataTask(with: viewRequest) { (data, response, error) in
+                guard let data = data,
+                    let _ = try? JSONDecoder().decode(ApiGenerateResponse.self, from: data) else {
+                        DispatchQueue.main.async {
+                            completion(nil)
+                        }
+                        return
+                }
+                DispatchQueue.main.async {
+                    completion(views)
+                }
+            }
+            task.resume()
+        }
+    }
 }

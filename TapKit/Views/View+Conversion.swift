@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 extension View {
-    @discardableResult static func view(from response: ViewResponse, context: NSManagedObjectContext) -> View {
+    @discardableResult static func addView(from response: ViewResponse, context: NSManagedObjectContext) -> View {
         guard let view = NSEntityDescription.insertNewObject(forEntityName: "View", into: context) as? View else {
             fatalError("Cannot create entity as non view")
         }
