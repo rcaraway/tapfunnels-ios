@@ -34,6 +34,14 @@ public class ViewDataStore {
         }
     }
     
+    //@REQUIRE: View's names must follow format: ViewControllerClassName.VariableName
+    public func getViews<T: UIViewController>(for controller: T){
+        //name = viewcontroller.variableName
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "View")
+        request.predicate = NSPredicate(format: "name BEGINSWITH[cd] $class").withSubstitutionVariables(["class" : NSStringFromClass(controller.self as! AnyClass)])
+        let results = try? persistentContainer.viewContext.execute(request)
+    }
+    
     public func save(views: [ViewResponse]){
         for viewResponse in views {
             if let view = view(for: viewResponse.name){

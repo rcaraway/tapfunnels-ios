@@ -59,11 +59,21 @@ public class TapKit: NSObject {
     
     public static func applyViewChanges<T: UIViewController>(to viewController: T) {
         let views = getViews(for: viewController)
+        //get views for uiviewcontroller
         //for each view with same name
         //apply any updates to it
     }
     
     static func getViews<T: UIViewController>(for viewController: T) -> [View] {
+        let responses = viewController.getViewResponsesFromVariables()
+        responses.map { }
+    }
+}
+
+private extension Array where Element == ViewResponse {
+    func toViews() -> [View] {
+        let dataStore = TapKit.shared.dataStore
         
+        map { $0.}
     }
 }
