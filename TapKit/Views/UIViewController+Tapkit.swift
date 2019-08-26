@@ -55,6 +55,28 @@ extension UIViewController {
         }
         return views
     }
+    
+    public func getUIViewsFromVariables(reflect: Mirror? = nil) -> [String : UIView] {
+        let mirror = reflect ?? Mirror(reflecting: self)
+        var views: [String : UIView] = [:]
+        if mirror.superclassMirror != nil {
+            let subViews = getUIViewsFromVariables(reflect: mirror.superclassMirror)
+            views = views.merging(subViews) { $1 }
+        }
+        for (_, attribute) in mirror.children.enumerated() {
+            if let propertyName = attribute.label {
+                if let viewController = attribute.value as? UIViewController {
+                    let subViews = viewController.getUIViewsFromVariables()
+                    views = views.merging(subViews) { $1 }
+                }
+                if let uiView = attribute.value as? UIView {
+                    let name = "\(NSStringFromClass(type(of: self))).\(propertyName)"
+                    views[name] = uiView
+                }
+            }
+        }
+        return views
+    }
 }
 
 public extension UIView {

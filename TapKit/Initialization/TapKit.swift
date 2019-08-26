@@ -30,6 +30,7 @@ public class TapKit: NSObject {
     }
     
     public static func generateViews<T: UIViewController>(for viewController: T) {
+        //TODO: break this into several smart functions
         // prompt user to input a name
         let alertController = UIAlertController(title: "Name the screen", message: "", preferredStyle: .alert)
         alertController.addTextField(configurationHandler: { textField in
@@ -58,15 +59,16 @@ public class TapKit: NSObject {
     }
     
     public static func applyViewChanges<T: UIViewController>(to viewController: T) {
+        let uiViews = viewController.getUIViewsFromVariables()
         let views = getViews(for: viewController)
-        //get views for uiviewcontroller
-        //for each view with same name
-        //apply any updates to it
+        //function: get saved CoreData Views from view controller
+        //function: for each View, find corresponding UIView by name
+        //  apply color change to view
     }
     
     static func getViews<T: UIViewController>(for viewController: T) -> [View] {
         let responses = viewController.getViewResponsesFromVariables()
-        responses.map { }
+        //GET UIVIEW's from viewController
     }
 }
 
