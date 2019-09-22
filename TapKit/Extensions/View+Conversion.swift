@@ -32,3 +32,12 @@ extension View {
         return ViewResponse(name: name, colorRed: colorRed, colorBlue: colorBlue, colorGreen: colorGreen, dateModified: date)
     }
 }
+
+public extension UIView {
+    func translate(view: View) {
+        backgroundColor = UIColor(red: CGFloat(view.colorRed)/255.0,
+                                  green:  CGFloat(view.colorGreen)/255.0,
+                                  blue:  CGFloat(view.colorBlue)/255.0, alpha: 1.0)
+        
+    }
+}

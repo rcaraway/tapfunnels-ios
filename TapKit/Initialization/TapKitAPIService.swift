@@ -26,7 +26,7 @@ public class TapKitAPIService {
     let request: TapKitRequest
     private(set) var busy = false
     
-    // @REQUIRE:  must be a valid SeatGeek API URL
+    // @REQUIRE:  must be a valid Tapkit API URL
     init(request: TapKitRequest) {
         guard request.isValidTapKitRequest() else {
             fatalError("valid URL Required")
@@ -37,9 +37,9 @@ public class TapKitAPIService {
     func beginInitialization(completion: @escaping ([ViewResponse]?,Error?) -> Void) {
         DispatchQueue.global().async {
             let task = URLSession.shared.dataTask(with: self.request) { (data, response, error) in
-                print("👀 SUCCESS? \(String(describing: data))")
                 guard let data = data,
-                    let apiResponse = try? JSONDecoder().decode(ApiInitResponse.self, from: data) else {
+                let apiResponse = try? JSONDecoder().decode(ApiInitResponse.self, from: data)
+                    else {
                         DispatchQueue.main.async {
                             completion(nil, error)
                         }
@@ -51,10 +51,6 @@ public class TapKitAPIService {
             }
             task.resume()
         }
-    }
-    
-    func generateViews(apiKey: String, from viewController: UIViewController, completion: @escaping ([ViewResponse]?) -> Void) {
-        generateViews(screenName: nil, apiKey: apiKey, from: viewController, completion: completion)
     }
     
     func saveViews(request: TapKitRequest, completion: @escaping (Bool) -> Void) {
@@ -75,13 +71,17 @@ public class TapKitAPIService {
         }
         
     }
+    
+    func generateViews(apiKey: String, from viewController: UIViewController, completion: @escaping ([ViewResponse]?) -> Void) {
+        generateViews(screenName: nil, apiKey: apiKey, from: viewController, completion: completion)
+    }
         
     func generateViews(screenName: String?,
                        apiKey: String,
                        from viewController: UIViewController,
                        completion: @escaping ([ViewResponse]?) -> Void) {
         DispatchQueue.global().async {
-            let views = viewController.getViewResponsesFromVariables()
+            let views = viewController.getAllViews()
             let viewRequest = TapKitRequest.tapKitViewGenerationRequest(name:screenName, apiKey: apiKey, views: views)
             let task = URLSession.shared.dataTask(with: viewRequest) { (data, response, error) in
                 guard let data = data,

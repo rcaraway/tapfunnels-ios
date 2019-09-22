@@ -14,7 +14,14 @@ public class ViewDataStore {
     private(set) var views:Set<View> = Set<View>()
 
     init() {
-        persistentContainer = NSPersistentContainer(name: "TapKit.views")
+        let momdName = "Views"
+        guard let modelURL = Bundle(for: type(of: self)).url(forResource: momdName, withExtension:"momd") else {
+            fatalError("Error loading model from bundle")
+        }
+        guard let mom = NSManagedObjectModel(contentsOf: modelURL) else {
+            fatalError("Error initializing mom from: \(modelURL)")
+        }
+        persistentContainer = NSPersistentContainer(name: momdName, managedObjectModel: mom)
         persistentContainer.loadPersistentStores(completionHandler: { (storeDescription , error) in
             if error != nil {
                 fatalError("Store would not load")
@@ -35,12 +42,11 @@ public class ViewDataStore {
     }
     
     //@REQUIRE: View's names must follow format: ViewControllerClassName.VariableName
-    public func getViews<T: UIViewController>(for controller: T) -> [View]? {
-        //name = viewcontroller.variableName
+    public func getViews<T: UIViewController>(for controller: T) -> [View] {
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "View")
         request.predicate = NSPredicate(format: "name BEGINSWITH[cd] $class").withSubstitutionVariables(["class" : NSStringFromClass(controller.self as! AnyClass)])
         let results = try? persistentContainer.viewContext.fetch(request)
-        return results as? [View]
+        return results as? [View] ?? []
     }
     
     public func save(views: [ViewResponse]){

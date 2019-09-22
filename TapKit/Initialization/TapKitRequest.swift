@@ -12,16 +12,16 @@ public typealias TapKitRequest = URLRequest
 
 public extension URLRequest {
     
-    private static let IS_HALCYON = false
+    private static let IS_HALCYON = true
     private static let TAPKIT_HOST = "localhost.com"
     private static var TAPKIT_DEVELOPER_HOST: String {
-        return IS_HALCYON ?  "10.10.10.33" : "192.168.0.20"
+        return IS_HALCYON ?  "192.168.23.57" : "192.168.0.20"
     }
     private static let TAPKIT_PORT = 9001
     private static let TAPKIT_SCHEME = "http"
     
     private static let TAPKIT_INIT_PATH = "/api/user/initialize"
-    private static let TAPKIT_GENERATE_SCREEN = "/api/app/screen/generate"
+    private static let TAPKIT_GENERATE_SCREEN = "/api/screen/generate"
 
     static func tapKitInitRequest(apiKey:String) -> TapKitRequest {
         let components = tapkitBaseComponents(path: TAPKIT_INIT_PATH)
@@ -31,9 +31,6 @@ public extension URLRequest {
         }
         var request = baseTapkitRequest(url: url, apiKey: apiKey)
         request.setValue(uniqueId, forHTTPHeaderField: "AppUserId")
-        print("✅ AppToken: \(String(describing: apiKey))")
-        print("✅ PhoneID: \(String(describing: uniqueId))")
-        print("✅ URL: \(String(describing: request.url))")
         return request
     }
     
@@ -46,10 +43,14 @@ public extension URLRequest {
             fatalError("Request must work")
         }
         var request = baseTapkitRequest(url: url, apiKey: apiKey)
+        request.httpMethod = "POST"
         if let name = name {
             request.setValue(name, forHTTPHeaderField: "ScreenName")
         }
         request.httpBody = body
+        if body.count > 0 {
+            request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+        }
         return request
     }
     
@@ -63,7 +64,7 @@ public extension URLRequest {
     }
     
     private static func baseTapkitRequest(url: URL, apiKey: String) -> URLRequest {
-        var request = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 10)
+        var request = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 60)
         request.setValue(apiKey, forHTTPHeaderField:"AppToken")
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         return request
