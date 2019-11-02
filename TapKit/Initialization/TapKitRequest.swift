@@ -12,10 +12,10 @@ public typealias TapKitRequest = URLRequest
 
 public extension URLRequest {
     
-    private static let IS_HALCYON = true
+    private static let IS_HALCYON = false
     private static let TAPKIT_HOST = "localhost.com"
     private static var TAPKIT_DEVELOPER_HOST: String {
-        return IS_HALCYON ?  "192.168.23.57" : "192.168.0.20"
+        return IS_HALCYON ?  "192.168.23.57" : "192.168.0.19"
     }
     private static let TAPKIT_PORT = 9001
     private static let TAPKIT_SCHEME = "http"
@@ -34,12 +34,17 @@ public extension URLRequest {
         return request
     }
     
+    private struct ViewsRequest: Encodable {
+        let views: [ViewResponse]
+    }
+    
     static func tapKitViewGenerationRequest(name: String?,
                                             apiKey: String,
                                             views: [ViewResponse]) -> TapKitRequest {
+        print("✅ TapFunnels: 👩‍🎨 tapKitViewGenerationRequest() began")
         let components = tapkitBaseComponents(path: TAPKIT_GENERATE_SCREEN)
         guard let url = components.url,
-        let body = try? JSONEncoder().encode(views) else {
+        let body = try? JSONEncoder().encode(ViewsRequest(views: views)) else {
             fatalError("Request must work")
         }
         var request = baseTapkitRequest(url: url, apiKey: apiKey)
@@ -47,10 +52,12 @@ public extension URLRequest {
         if let name = name {
             request.setValue(name, forHTTPHeaderField: "ScreenName")
         }
+        request.setValue("application/json", forHTTPHeaderField: "content-type")
         request.httpBody = body
-        if body.count > 0 {
-            request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
-        }
+//        if body.count > 0 {
+//            request.setValue("\(body.count)", forHTTPHeaderField: "Content-Length")
+//        }
+        print("✅ TapFunnels: 👩‍🎨 tapKitViewGenerationRequest() generated request: \(String(describing: request.url))")
         return request
     }
     
@@ -66,7 +73,7 @@ public extension URLRequest {
     private static func baseTapkitRequest(url: URL, apiKey: String) -> URLRequest {
         var request = URLRequest(url: url, cachePolicy: .reloadRevalidatingCacheData, timeoutInterval: 60)
         request.setValue(apiKey, forHTTPHeaderField:"AppToken")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
         return request
     }
     

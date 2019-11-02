@@ -18,7 +18,9 @@
 		35C098EA22B0693200F7FE98 /* TapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098E922B0693200F7FE98 /* TapKit.swift */; };
 		35C098EC22B06ABE00F7FE98 /* TapKitAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098EB22B06ABE00F7FE98 /* TapKitAPIService.swift */; };
 		35C098EE22B06CEB00F7FE98 /* TapKitRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C098ED22B06CEB00F7FE98 /* TapKitRequest.swift */; };
+		35C8749C23608816000A0B22 /* UIApplication+Tapkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35C8749B23608816000A0B22 /* UIApplication+Tapkit.swift */; };
 		35CC43B4231E9EE500D602DF /* UIAlertController+TapKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35CC43B3231E9EE500D602DF /* UIAlertController+TapKit.swift */; };
+		35D32943236C6D51006A0E58 /* ViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D32942236C6D51006A0E58 /* ViewCoordinator.swift */; };
 		35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D945C322F113FD00C444DD /* UIColor+Components.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,7 +49,9 @@
 		35C098E922B0693200F7FE98 /* TapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKit.swift; sourceTree = "<group>"; };
 		35C098EB22B06ABE00F7FE98 /* TapKitAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKitAPIService.swift; sourceTree = "<group>"; };
 		35C098ED22B06CEB00F7FE98 /* TapKitRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapKitRequest.swift; sourceTree = "<group>"; };
+		35C8749B23608816000A0B22 /* UIApplication+Tapkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Tapkit.swift"; sourceTree = "<group>"; };
 		35CC43B3231E9EE500D602DF /* UIAlertController+TapKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+TapKit.swift"; sourceTree = "<group>"; };
+		35D32942236C6D51006A0E58 /* ViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCoordinator.swift; sourceTree = "<group>"; };
 		35D945C322F113FD00C444DD /* UIColor+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Components.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +106,7 @@
 		35C098D022B0681300F7FE98 /* TapKit */ = {
 			isa = PBXGroup;
 			children = (
+				35D32941236C6D09006A0E58 /* ViewController */,
 				35CC43B2231E9E1300D602DF /* Extensions */,
 				35152E0C22DE9B2000EE87E8 /* Views */,
 				35C098E822B068F200F7FE98 /* Initialization */,
@@ -136,8 +141,17 @@
 				35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */,
 				35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */,
 				35CC43B3231E9EE500D602DF /* UIAlertController+TapKit.swift */,
+				35C8749B23608816000A0B22 /* UIApplication+Tapkit.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		35D32941236C6D09006A0E58 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				35D32942236C6D51006A0E58 /* ViewCoordinator.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,10 +263,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35D32943236C6D51006A0E58 /* ViewCoordinator.swift in Sources */,
 				3581361D22EF2FB000A627EA /* Viewable.swift in Sources */,
 				35B0BE0022E7DAE50044429F /* UIViewController+Tapkit.swift in Sources */,
 				35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */,
 				352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */,
+				35C8749C23608816000A0B22 /* UIApplication+Tapkit.swift in Sources */,
 				35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */,
 				35C098EA22B0693200F7FE98 /* TapKit.swift in Sources */,
 				35B0BE0222E7DB5A0044429F /* ViewDataStore.swift in Sources */,

@@ -33,9 +33,11 @@ extension UIViewController {
     }
     
     private func getAllSubviewsFromInstanceVariables(reflect: Mirror? = nil) -> [(String, UIView)] {
+        print("✅ TapFunnels: 👨‍👩‍👦‍👦 getAllSubviewsFromInstanceVariables() began")
         let mirror = reflect ?? Mirror(reflecting: self)
+        
         var views: [(String, UIView)] = []
-        if mirror.superclassMirror != nil {
+        if mirror.superclassMirror != nil && mirror.subjectType is UIViewController {
             views.append(contentsOf: getAllSubviewsFromInstanceVariables())
         }
         for (_, attribute) in mirror.children.enumerated() {
@@ -50,6 +52,7 @@ extension UIViewController {
                 }
             }
         }
+        print("✅ TapFunnels: 👨‍👩‍👦‍👦 getAllSubviewsFromInstanceVariables() returned views: \(views)")
         return views
     }
     

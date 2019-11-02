@@ -31,11 +31,13 @@ public class ViewDataStore {
     }
     
     public func fetchViews() {
+        print("✅ TapFunnels: 🔑 DataStore: fetchViews() began")
         let objectContext:NSManagedObjectContext = persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "View")
         do {
             let results = try objectContext.fetch(request) as! [View]
             views = Set(results)
+            print("✅ TapFunnels: 🔑 DataStore: fetchViews() retrieved views: \(views)")
         } catch {
             fatalError("Favorite Results failed to load or failed to convert to Photo object")
         }
@@ -43,13 +45,16 @@ public class ViewDataStore {
     
     //@REQUIRE: View's names must follow format: ViewControllerClassName.VariableName
     public func getViews<T: UIViewController>(for controller: T) -> [View] {
+       print("✅ TapFunnels: 🔑 DataStore: getViews() began")
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "View")
         request.predicate = NSPredicate(format: "name BEGINSWITH[cd] $class").withSubstitutionVariables(["class" : NSStringFromClass(controller.self as! AnyClass)])
         let results = try? persistentContainer.viewContext.fetch(request)
+        print("✅ TapFunnels: 🔑 DataStore: getViews() got views: \(views)")
         return results as? [View] ?? []
     }
     
     public func save(views: [ViewResponse]){
+        print("✅ TapFunnels: 🔑 DataStore: save() began saving views: \n\(views)")
         for viewResponse in views {
             if let view = view(for: viewResponse.name){
                 if view.viewResponse() != viewResponse {
@@ -62,6 +67,7 @@ public class ViewDataStore {
         }
         if persistentContainer.viewContext.hasChanges {
             try? persistentContainer.viewContext.save() //TODO: proper failure handling
+            print("✅ TapFunnels: 🔑 DataStore: save() didSave")
         }
     }
     
@@ -72,9 +78,11 @@ public class ViewDataStore {
     }
     
     private func add(viewResponse: ViewResponse){
+        print("✅ TapFunnels: 🔑 DataStore: add() began with response: \(viewResponse)")
         guard view(for: viewResponse.name) == nil else { return }
         let view = View.addView(from: viewResponse, context: persistentContainer.viewContext)
         views.insert(view)
+        print("✅ TapFunnels: 🔑 DataStore: add() did Insert view: \(view)")
     }
     
     private func view(for name: String) -> View? {

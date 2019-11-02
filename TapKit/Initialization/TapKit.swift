@@ -16,10 +16,14 @@ public class TapKit: NSObject {
     var apiKey: String?
     var dataStore: ViewDataStore = ViewDataStore()
     var obs: NSKeyValueObservation?
+    let viewCoordinator: ViewCoordinator
 
-    public override init() {}
+    public override init() {
+        viewCoordinator = ViewCoordinator()
+    }
     
     public static func initialize(apiKey: String) {
+        print("✅ TapFunnels: 🎬 Initialize() began")
         let tapkit = TapKit.shared
         tapkit.apiKey = apiKey
         let request = TapKitRequest.tapKitInitRequest(apiKey: apiKey)
@@ -27,27 +31,38 @@ public class TapKit: NSObject {
         shared.api = api
         api.beginInitialization { (response, error) in
             tapkit.listenToPhoneVolumeAdjustment()
-            guard let views = response else { return }
+            guard let views = response else {
+                print("✅ TapFunnels: 🎬 Initialize() FAILED with error: \(String(describing: error))")
+                return
+            }
+            print("✅ TapFunnels: 🎬 Initialize() returned views: \(views)")
             tapkit.dataStore.save(views: views)
         }
     }
     
     public static func generateViews<T: UIViewController>(for viewController: T) {
+        print("✅ TapFunnels: 👩‍🎨 generateViews() began for \(viewController)")
         UIAlertController.screenNamingPrompt {
             guard let name = $0.textFields?.first?.text,
                 let apiKey = TapKit.shared.apiKey else { return }
+            print("✅ TapFunnels: 👩‍🎨 generateViews() picked name: \(name) for \(viewController)")
             let views = viewController.getAllViews()
             let request = TapKitRequest.tapKitViewGenerationRequest(name: name, apiKey: apiKey, views: views)
             let api = TapKitAPIService(request: request)
             api.saveViews(request: request, completion: { success in
-                success ?
-                    UIAlertController.showScreenConfirmationPrompt() :
+                if success {
+                    UIAlertController.showScreenConfirmationPrompt()
+                    print("✅ TapFunnels: 👩‍🎨 generateViews() success!")
+                }else {
+                    print("✅ TapFunnels: 👩‍🎨 generateViews() FAILED!")
                     UIAlertController.showScreenFailurePrompt()
+                }
             })
         }
     }
     
     public static func applyViewChanges<T: UIViewController>(to viewController: T) {
+        print("✅ TapFunnels: 👑 applyViewChanges() began to view Controller \(viewController)")
         let uiViews = viewController.getUIViewsFromVariables()
         let views = getViews(for: viewController)
         for view in views {
@@ -71,10 +86,14 @@ public class TapKit: NSObject {
             return
         }
         obs = audioSession.observe(\.outputVolume) { session, change in
-            guard let viewController = UIApplication.shared.keyWindow?.rootViewController else {
+            print("✅ TapFunnels: 🔈 VOLUMNE CHANGED()")
+            guard let viewController = UIApplication.topViewController() else {
                 return
             }
             TapKit.generateViews(for: viewController)
         }
+        print("✅ TapFunnels: 🔈 LISTENING TO VOLUME with observer \(obs)")
     }
+    
+    
 }
