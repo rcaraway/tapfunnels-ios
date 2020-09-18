@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HappyAPIService",
+        "repositoryURL": "https://github.com/rcaraway/HappyAPIService.git",
+        "state": {
+          "branch": "master",
+          "revision": "1429a5c8a90897b0932ddeac27673f9a51ea2cc6",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
