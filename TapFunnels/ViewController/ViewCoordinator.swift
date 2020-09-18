@@ -35,8 +35,6 @@ public class ViewCoordinator {
             
             print("✅ TapFunnels: 👀 observed change in key window layers \(String(describing: window.rootViewController?.view.subviews))")
         }
-        
-        
     }
     
     @objc func didChangeKeyWindow(notification: Notification) {

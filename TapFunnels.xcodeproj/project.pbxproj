@@ -3,11 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 352A219722DEA3AD004A516B /* Views.xcdatamodeld */; };
+		354DC2F4251520FF00DF1ECC /* HappyAPIService in Frameworks */ = {isa = PBXBuildFile; productRef = 354DC2F3251520FF00DF1ECC /* HappyAPIService */; };
+		354DC2F72515212500DF1ECC /* ViewAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC2F62515212500DF1ECC /* ViewAPIService.swift */; };
+		354DC2FE2515296900DF1ECC /* UIApplication+ViewCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC2F92515296800DF1ECC /* UIApplication+ViewCapture.swift */; };
+		354DC2FF2515296900DF1ECC /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC2FA2515296900DF1ECC /* UIColor+Hex.swift */; };
+		354DC3012515296900DF1ECC /* ViewStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC2FC2515296900DF1ECC /* ViewStore.swift */; };
+		354DC3022515296900DF1ECC /* UIViewController+Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = 354DC2FD2515296900DF1ECC /* UIViewController+Views.swift */; };
 		3581361D22EF2FB000A627EA /* Viewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3581361C22EF2FB000A627EA /* Viewable.swift */; };
 		35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */; };
 		35B0BE0022E7DAE50044429F /* UIViewController+Tapkit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */; };
@@ -36,6 +42,11 @@
 
 /* Begin PBXFileReference section */
 		352A219822DEA3AD004A516B /* View.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = View.xcdatamodel; sourceTree = "<group>"; };
+		354DC2F62515212500DF1ECC /* ViewAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewAPIService.swift; sourceTree = "<group>"; };
+		354DC2F92515296800DF1ECC /* UIApplication+ViewCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIApplication+ViewCapture.swift"; sourceTree = "<group>"; };
+		354DC2FA2515296900DF1ECC /* UIColor+Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		354DC2FC2515296900DF1ECC /* ViewStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewStore.swift; sourceTree = "<group>"; };
+		354DC2FD2515296900DF1ECC /* UIViewController+Views.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Views.swift"; sourceTree = "<group>"; };
 		3581361C22EF2FB000A627EA /* Viewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewable.swift; sourceTree = "<group>"; };
 		35B0BDFD22E7DA4E0044429F /* View+Conversion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Conversion.swift"; sourceTree = "<group>"; };
 		35B0BDFF22E7DAE50044429F /* UIViewController+Tapkit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Tapkit.swift"; sourceTree = "<group>"; };
@@ -60,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				354DC2F4251520FF00DF1ECC /* HappyAPIService in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +97,26 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		354DC2F52515210E00DF1ECC /* ViewStore */ = {
+			isa = PBXGroup;
+			children = (
+				354DC2FC2515296900DF1ECC /* ViewStore.swift */,
+				354DC2F82515295A00DF1ECC /* ViewCapture */,
+				354DC2F62515212500DF1ECC /* ViewAPIService.swift */,
+			);
+			path = ViewStore;
+			sourceTree = "<group>";
+		};
+		354DC2F82515295A00DF1ECC /* ViewCapture */ = {
+			isa = PBXGroup;
+			children = (
+				354DC2F92515296800DF1ECC /* UIApplication+ViewCapture.swift */,
+				354DC2FA2515296900DF1ECC /* UIColor+Hex.swift */,
+				354DC2FD2515296900DF1ECC /* UIViewController+Views.swift */,
+			);
+			path = ViewCapture;
+			sourceTree = "<group>";
+		};
 		35C098C422B0681300F7FE98 = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +138,7 @@
 		35C098D022B0681300F7FE98 /* TapFunnels */ = {
 			isa = PBXGroup;
 			children = (
+				354DC2F52515210E00DF1ECC /* ViewStore */,
 				35D32941236C6D09006A0E58 /* ViewController */,
 				35CC43B2231E9E1300D602DF /* Extensions */,
 				35152E0C22DE9B2000EE87E8 /* Views */,
@@ -182,6 +215,9 @@
 			dependencies = (
 			);
 			name = TapFunnels;
+			packageProductDependencies = (
+				354DC2F3251520FF00DF1ECC /* HappyAPIService */,
+			);
 			productName = TapKit;
 			productReference = 35C098CE22B0681300F7FE98 /* TapFunnels.framework */;
 			productType = "com.apple.product-type.framework";
@@ -231,6 +267,9 @@
 				en,
 			);
 			mainGroup = 35C098C422B0681300F7FE98;
+			packageReferences = (
+				354DC2F2251520FF00DF1ECC /* XCRemoteSwiftPackageReference "HappyAPIService" */,
+			);
 			productRefGroup = 35C098CF22B0681300F7FE98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -266,10 +305,15 @@
 				35D32943236C6D51006A0E58 /* ViewCoordinator.swift in Sources */,
 				3581361D22EF2FB000A627EA /* Viewable.swift in Sources */,
 				35B0BE0022E7DAE50044429F /* UIViewController+Tapkit.swift in Sources */,
+				354DC3022515296900DF1ECC /* UIViewController+Views.swift in Sources */,
 				35D945C422F113FD00C444DD /* UIColor+Components.swift in Sources */,
+				354DC2F72515212500DF1ECC /* ViewAPIService.swift in Sources */,
 				352A219922DEA3AD004A516B /* Views.xcdatamodeld in Sources */,
 				35C8749C23608816000A0B22 /* UIApplication+Tapkit.swift in Sources */,
 				35B0BDFE22E7DA4E0044429F /* View+Conversion.swift in Sources */,
+				354DC2FE2515296900DF1ECC /* UIApplication+ViewCapture.swift in Sources */,
+				354DC2FF2515296900DF1ECC /* UIColor+Hex.swift in Sources */,
+				354DC3012515296900DF1ECC /* ViewStore.swift in Sources */,
 				35C098EA22B0693200F7FE98 /* TapKit.swift in Sources */,
 				35B0BE0222E7DB5A0044429F /* ViewDataStore.swift in Sources */,
 				35C098EC22B06ABE00F7FE98 /* TapKitAPIService.swift in Sources */,
@@ -569,6 +613,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		354DC2F2251520FF00DF1ECC /* XCRemoteSwiftPackageReference "HappyAPIService" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rcaraway/HappyAPIService.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		354DC2F3251520FF00DF1ECC /* HappyAPIService */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 354DC2F2251520FF00DF1ECC /* XCRemoteSwiftPackageReference "HappyAPIService" */;
+			productName = HappyAPIService;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		352A219722DEA3AD004A516B /* Views.xcdatamodeld */ = {
